@@ -13,6 +13,7 @@ import React, { useState } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
 import siteimage from "../assets/images/budgetree.png";
 import signup2 from "../assets/images/signup.png";
+import { Link } from "react-router-dom";
 
 export const Signup = () => {
   const [email, setEmail] = useState("");
@@ -33,12 +34,12 @@ export const Signup = () => {
           <img src={siteimage}></img>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6} lg={6}>
-              <Box sx={{ mt: 9, ml: 6 }}>
+              <Box sx={{ mt: 9, ml: { xs: 0, md: 6 } }}>
                 <h1>Sign Up</h1>
                 <p style={{ opacity: 0.7, marginTop: "-10px" }}>
                   Please fill your detail to create your account.{" "}
                 </p>
-                <Box sx={{ width: "80%", mt: 6 }}>
+                <Box sx={{ width: { xs: "100%", md: "80%" }, mt: 6 }}>
                   <label style={{ fontWeight: 600 }} for="email">
                     Email
                   </label>
@@ -117,7 +118,22 @@ export const Signup = () => {
                         />
                       </Grid>
                       <Grid item xs={6}>
-                        Forgot Password?
+                        <Link
+                          style={{ textDecoration: "none" }}
+                          to="/forgot password"
+                        >
+                          <p
+                            style={{
+                              color: "blue",
+                              textDecoration: "none",
+                              textAlign: "end",
+                              marginTop: "12px",
+                              // textUnderline: "none",
+                            }}
+                          >
+                            Forgot Password?
+                          </p>
+                        </Link>
                       </Grid>
                     </Grid>
                   </Box>
@@ -134,13 +150,13 @@ export const Signup = () => {
                         border: "none",
                       }}
                     >
-                      Sign In
+                      Sign Up
                     </button>
 
                     <p style={{ textAlign: "center" }}>
                       Don't have an account
                       <span style={{ color: "#11409B", fontWeight: 500 }}>
-                        Sign up
+                        <Link to="/">Sign In</Link>
                       </span>
                     </p>
                   </Box>

@@ -35,13 +35,20 @@ export const Profilecard = () => {
   return (
     <Card sx={{ width: "100%" }}>
       <Tabs value={tabValue} onChange={handleChangeTab}>
-        <Tab label="Edit Profile" />
-        <Tab label="Security" />
+        <Tab
+          sx={{
+            fontWeight: 700,
+
+            color: "gray",
+          }}
+          label="Edit Profile"
+        />
+        <Tab sx={{ fontWeight: 700 }} label="Security" />
       </Tabs>
       <CardContent>
         {tabValue === 0 && (
           <Box sx={{ width: "100%" }}>
-            <Grid container spacing={2}>
+            <Grid container spacing={12}>
               <Grid item xs={12} md={2} lg={2}>
                 <img
                   style={{
@@ -49,66 +56,208 @@ export const Profilecard = () => {
                     width: "100%",
                     borderRadius: "50%",
                     backgroundColor: "gray",
+                    marginTop: "30%",
+                    marginLeft: "15%",
                   }}
                   src={siteimage}
                 ></img>
               </Grid>
               <Grid item xs={12} md={10} lg={10}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} md={6} lg={6}>
-                    <label style={{ fontWeight: 500 }}>Name</label>
-                    <TextField fullWidth margin="normal" />
-                    <label style={{ fontWeight: 500 }} for="email">
-                      Email
+                <Grid container spacing={12}>
+                  <Grid item xs={12} md={6} lg={6} sx={{ mt: 2.5 }}>
+                    <label style={{ fontWeight: 500, fontSize: "large" }}>
+                      Name :-
                     </label>
-                    <TextField fullWidth margin="normal" />
-                    <label style={{ fontWeight: 500 }} for="date of birth">
-                      Date of Birth
-                    </label>
-                    <TextField fullWidth margin="normal" />
-                    <label style={{ fontWeight: 500 }} for="Address">
-                      Address
-                    </label>
-                    <TextField fullWidth margin="normal" />
-                    <label style={{ fontWeight: 500 }} for="postal code">
-                      Postal Code
-                    </label>
-                    <TextField fullWidth margin="normal" />
+                    <input
+                      style={{
+                        width: "100%",
+                        borderRadius: "8px", // Set the border radius
+                        height: "40px",
+                        border: "2px solid gray",
+                        outline: "none",
+                        marginTop: "5px",
+                      }}
+                    />
+                    <Box sx={{ mt: 3 }}>
+                      <label
+                        style={{
+                          fontWeight: 500,
+                          fontSize: "large",
+                        }}
+                        for="email"
+                      >
+                        Email:-
+                      </label>
+                      <input
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px", // Set the border radius
+                          height: "40px",
+                          border: "2px solid gray",
+                          outline: "none",
+                          marginTop: "5px",
+                        }}
+                      />
+                    </Box>
+                    <Box sx={{ mt: 3 }}>
+                      <label
+                        style={{ fontWeight: 500, fontSize: "large" }}
+                        for="date of birth"
+                      >
+                        Date of Birth :-
+                      </label>
+                      <input
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px", // Set the border radius
+                          height: "40px",
+                          border: "2px solid gray",
+                          outline: "none",
+                          marginTop: "5px",
+                        }}
+                      />
+                    </Box>
+                    <Box sx={{ mt: 3 }}>
+                      <label
+                        style={{ fontWeight: 500, fontSize: "large" }}
+                        for="Address"
+                      >
+                        Address :-
+                      </label>
+                      <input
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px", // Set the border radius
+                          height: "40px",
+                          border: "2px solid gray",
+                          outline: "none",
+                          marginTop: "5px",
+                        }}
+                      />
+                    </Box>
+                    <Box sx={{ mt: 3 }}>
+                      <label
+                        style={{ fontWeight: 500, fontSize: "large" }}
+                        for="postal code"
+                      >
+                        Postal Code :-
+                      </label>
+                      <input
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px", // Set the border radius
+                          height: "40px",
+                          border: "2px solid gray",
+                          outline: "none",
+                          marginTop: "5px",
+                        }}
+                      />
+                    </Box>
                   </Grid>
                   <Grid item xs={12} md={6} lg={6}>
-                    <label style={{ fontWeight: 500 }}>Username</label>
-                    <TextField fullWidth margin="normal" />
-                    <label style={{ fontWeight: 500 }}>Password</label>
-                    <TextField fullWidth margin="normal" />
-                    <label style={{ fontWeight: 500 }}>Present Address</label>
-                    <TextField fullWidth margin="normal" />
-                    <label style={{ fontWeight: 500 }}>City</label>
-                    <TextField fullWidth margin="normal" />
-                    <label style={{ fontWeight: 500 }}>Country</label>
-                    <TextField fullWidth margin="normal" />
+                    <Box sx={{ mt: 3 }}>
+                      <label style={{ fontWeight: 500, fontSize: "large" }}>
+                        Username :-
+                      </label>
+                      <input
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px", // Set the border radius
+                          height: "40px",
+                          border: "2px solid gray",
+                          outline: "none",
+                          marginTop: "5px",
+                        }}
+                      />
+                    </Box>
+                    <Box sx={{ mt: 3 }}>
+                      <label style={{ fontWeight: 500, fontSize: "large" }}>
+                        Password :-
+                      </label>
+                      <input
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px", // Set the border radius
+                          height: "40px",
+                          border: "2px solid gray",
+                          outline: "none",
+                          marginTop: "5px",
+                        }}
+                      />
+                    </Box>
+                    <Box sx={{ mt: 3 }}>
+                      <label style={{ fontWeight: 500, fontSize: "large" }}>
+                        Present Address :-
+                      </label>
+                      <input
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px", // Set the border radius
+                          height: "40px",
+                          border: "2px solid gray",
+                          outline: "none",
+                          marginTop: "5px",
+                        }}
+                      />
+                    </Box>
+                    <Box sx={{ mt: 3 }}>
+                      <label style={{ fontWeight: 500, fontSize: "large" }}>
+                        City :-
+                      </label>
+                      <input
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px", // Set the border radius
+                          height: "40px",
+                          border: "2px solid gray",
+                          outline: "none",
+                          marginTop: "5px",
+                        }}
+                      />
+                    </Box>
+                    <Box sx={{ mt: 3 }}>
+                      <label style={{ fontWeight: 500, fontSize: "large" }}>
+                        Country :-
+                      </label>
+                      <input
+                        style={{
+                          width: "100%",
+                          borderRadius: "8px", // Set the border radius
+                          height: "40px",
+                          border: "2px solid gray",
+                          outline: "none",
+                          marginTop: "5px",
+                        }}
+                      />
+                    </Box>
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
 
-            <Box sx={{ textAlign: "end" }}>
-              <Button variant="contained" color="primary">
+            <Box sx={{ textAlign: "end", mt: 6 }}>
+              <Button
+                sx={{ width: "20%", height: "50px", mr: 4 }}
+                variant="contained"
+                color="primary"
+              >
                 Save
               </Button>
             </Box>
           </Box>
         )}
         {tabValue === 1 && (
-          <Box sx={{ mr: 0 }}>
-            <p style={{ color: "black", fontWeight: 500 }}>
+          <Box sx={{ mr: 0, width: "40%" }}>
+            <p style={{ color: "black", fontWeight: 500, fontSize: "larger" }}>
               Two-factor Authentication
             </p>
             <FormControlLabel
               control={<Switch checked={isChecked} onChange={handleChange} />}
-              // label={isChecked ? "ON" : "OFF"}
               label={"Enable or Disable two factor Authentication "}
             />
-            <p style={{ fontWeight: 600, color: "blue" }}>Change Password</p>
+            <p style={{ fontWeight: 600, color: "blue", fontSize: "x-large" }}>
+              Change Password
+            </p>
             <label style={{ fontWeight: 600 }} for="password">
               Current Password
             </label>
@@ -134,7 +283,7 @@ export const Profilecard = () => {
               }}
             />
             <Box sx={{ mt: 3 }}>
-              <label style={{ fontWeight: 500 }} for="password">
+              <label style={{ fontWeight: 600 }} for="password">
                 {" "}
                 New Password
               </label>
@@ -161,7 +310,7 @@ export const Profilecard = () => {
               />
             </Box>
             <Box sx={{ textAlign: "end", mt: 5 }}>
-              <Button variant="contained" color="primary">
+              <Button sx={{ width: "30%" }} variant="contained" color="primary">
                 Save
               </Button>
             </Box>

@@ -77,7 +77,6 @@ export const Enterotp = () => {
                         Enter OTP
                       </label>
                       <Box sx={{ mt: 1 }}>
-                        {" "}
                         <Grid container spacing={2}>
                           {otp.map((digit, index) => (
                             <Grid item xs={2} key={index}>

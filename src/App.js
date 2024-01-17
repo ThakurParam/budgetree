@@ -15,16 +15,20 @@ import { Profilecard2 } from "./components/Profilecard2";
 import { Icon } from "@mui/material";
 
 import { Tabel2 } from "./components/Tabel2";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <SignIn />
-      <Forgotpassword />
-      <Enterotp />
-      <ResetPassword />
-      <Signup />
-      <Dashboard />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/forgot password" element={<Forgotpassword />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

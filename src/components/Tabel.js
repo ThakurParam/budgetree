@@ -9,44 +9,79 @@ import {
   Paper,
   Button,
 } from "@mui/material";
-// import { makeStyles } from "@mui/system";
-// const useStyles = makeStyles((theme) => ({
-//   receiptButton: {
-//     color: theme.palette.primary.main,
-//   },
-// }));
-export const Tabel = ({ transactions }) => {
-  // const classes = useStyles();
-  
 
+export const Tabel = ({ transactions }) => {
   const handleDownloadReceipt = (transactionId) => {};
   return (
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Description</TableCell>
-            <TableCell>Transaction ID</TableCell>
-            <TableCell>Type</TableCell>
-            <TableCell>Card</TableCell>
-            <TableCell>Date</TableCell>
-            <TableCell>Amount</TableCell>
-            <TableCell>Receipt</TableCell>
+            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+              Description
+            </TableCell>
+            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+              Transaction ID
+            </TableCell>
+            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+              Type
+            </TableCell>
+            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+              Card
+            </TableCell>
+            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+              Date
+            </TableCell>
+            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+              Amount
+            </TableCell>
+            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+              Receipt
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {transactions.map((transaction, index) => (
             <TableRow key={index}>
-              <TableCell>{transaction.description}</TableCell>
-              <TableCell>{transaction.transactionId}</TableCell>
-              <TableCell>{transaction.type}</TableCell>
-              <TableCell>{transaction.card}</TableCell>
-              <TableCell>{transaction.date}</TableCell>
-              <TableCell>{transaction.amount}</TableCell>
+              <TableCell
+                sx={{ fontSize: "15px", color: "purple", fontWeight: 600 }}
+              >
+                {transaction.description}
+              </TableCell>
+              <TableCell
+                sx={{
+                  fontSize: "15px",
+                  color: "black",
+                  fontWeight: 600,
+                }}
+              >
+                {transaction.transactionId}
+              </TableCell>
+              <TableCell
+                sx={{
+                  fontSize: "15px",
+                  color: "Green",
+                  fontWeight: 600,
+                }}
+              >
+                {transaction.type}
+              </TableCell>
+              <TableCell
+                sx={{ fontSize: "15px", color: "black", fontWeight: 600 }}
+              >
+                {transaction.card}
+              </TableCell>
+              <TableCell sx={{ fontSize: "15px", color: "", fontWeight: 600 }}>
+                {transaction.date}
+              </TableCell>
+              <TableCell
+                sx={{ fontSize: "15px", color: "purple", fontWeight: 600 }}
+              >
+                {transaction.amount}
+              </TableCell>
               <TableCell>
                 <Button
                   variant="outlined"
-                  // className={classes.receiptButton}
                   onClick={() =>
                     handleDownloadReceipt(transaction.transactionId)
                   }

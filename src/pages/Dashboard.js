@@ -36,6 +36,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import CallIcon from "@mui/icons-material/Call";
 import { Chart } from "../components/Chart";
 import siteimage from "../assets/images/budgetree.png";
+import { NotificationsPanel } from "../components/NotificationsPanel";
 export const Dashboard = () => {
   const [selectedTab, setSelectedTab] = useState("");
   const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -85,6 +86,89 @@ export const Dashboard = () => {
       variant="permanent"
       sx={{
         zIndex: 9,
+        width: 240,
+        display: { md: "block", xs: "none" },
+        flexShrink: 0,
+
+        "& .MuiDrawer-paper": {
+          width: 240,
+          boxSizing: "border-box",
+        },
+      }}
+    >
+      {/* <Toolbar /> */}
+      <List sx={{ mt: 10 }}>
+        <ListItem
+          button
+          key="dashboard"
+          onClick={() => handleTabClick("dashboard")}
+          sx={{
+            borderBottom:
+              selectedTab === "dashboard"
+                ? "2px solid blue"
+                : "2px solid transparent",
+          }}
+        >
+          <ListItemIcon>
+            <DashboardIcon
+              sx={{ color: selectedTab === "dashboard" ? "blue" : "" }}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary="Dashboard"
+            sx={{ color: selectedTab === "dashboard" ? "blue" : "" }}
+          />
+        </ListItem>
+        <ListItem
+          button
+          key="user"
+          onClick={() => handleTabClick("user")}
+          sx={{
+            mt: 1,
+            borderBottom:
+              selectedTab === "user"
+                ? "2px solid blue"
+                : "2px solid transparent",
+          }}
+        >
+          <ListItemIcon>
+            <PersonIcon sx={{ color: selectedTab === "user" ? "blue" : "" }} />
+          </ListItemIcon>
+          <ListItemText
+            primary="User"
+            sx={{ color: selectedTab === "user" ? "blue" : "" }}
+          />
+        </ListItem>
+        <ListItem
+          button
+          key="transactions"
+          onClick={() => handleTabClick("transactions")}
+          sx={{
+            mt: 1,
+            borderBottom:
+              selectedTab === "transactions"
+                ? "2px solid blue"
+                : "2px solid transparent",
+          }}
+        >
+          <ListItemIcon>
+            <ListAltIcon
+              sx={{ color: selectedTab === "transactions" ? "blue" : "" }}
+            />
+          </ListItemIcon>
+          <ListItemText
+            primary="Transactions"
+            sx={{ color: selectedTab === "transactions" ? "blue" : "" }}
+          />
+        </ListItem>
+      </List>
+    </Drawer>
+  );
+  const Sidebar = (
+    <Drawer
+      variant="permanent"
+      sx={{
+        // zIndex: 9,
         width: 240,
         display: { md: "block", xs: "none" },
         flexShrink: 0,
@@ -164,15 +248,25 @@ export const Dashboard = () => {
   const topBar = (
     <AppBar position="fixed" sx={{ zIndex: 99 }}>
       <Toolbar sx={{ bgcolor: "white" }}>
-        <img src={siteimage}></img>
+        <img
+          style={{
+            width: "8%",
+            display: { md: "none", xs: "none" },
+          }}
+          src={siteimage}
+        ></img>
+        <mobileDrawer />
         <IconButton
           color="inherit"
           onClick={handleMobileDrawerOpen}
-          sx={{ mr: 2, display: { md: "none", xs: "block" } }}
+          sx={{
+            mr: 2,
+            display: { md: "none", xs: "block", textAlign: "center" },
+          }}
         >
           <MenuIcon />
         </IconButton>
-        <div style={{ flexGrow: 1, textAlign: "end" }}>
+        <div style={{ flexGrow: 1, textAlign: "end", marginRight: "1%" }}>
           <IconButton
             color="black"
             onClick={handleNotificationsClick}
@@ -180,24 +274,22 @@ export const Dashboard = () => {
           >
             <NotificationsIcon />
           </IconButton>
+          {isNotificationsOpen && (
+            <NotificationsPanel onClose={() => setNotificationsOpen(false)} />
+          )}
+        </div>
+        <div style={{ textAlign: "end", marginRight: "2%" }}>
+          <IconButton edge="end" color="black" aria-label="search">
+            <SearchIcon />
+          </IconButton>
         </div>
         <div>
           <Avatar
             alt="User Avatar"
             src="/path/to/avatar.jpg"
             sx={{ cursor: "pointer" }}
-            onClick={handleOpenProfile}
+            onClick={() => handleTabClick("avatar")}
           />
-          <Dialog
-            open={openProfile}
-            onClose={handleCloseProfile}
-            sx={{ width: "100%" }}
-          >
-            <DialogTitle>Profile</DialogTitle>
-            <DialogContent>
-              <Profilecard />
-            </DialogContent>
-          </Dialog>
         </div>
       </Toolbar>
     </AppBar>
@@ -205,11 +297,12 @@ export const Dashboard = () => {
 
   const mobileDrawer = (
     <MuiDrawer
-      anchor="left"
+      // sx={{ display: {}, color: "black" }}
+      anchor="right"
       open={isMobileDrawerOpen}
       onClose={handleMobileDrawerClose}
     >
-      {leftSidebar}
+      {Sidebar}
     </MuiDrawer>
   );
 
@@ -437,12 +530,20 @@ export const Dashboard = () => {
       case "transactions":
         return (
           <>
-            <Box sx={{ mt: 15, width: "100%" }}>
+            <Box sx={{ mt: 10, width: "100%" }}>
               <h1>Transaction here</h1>
 
               <div>
                 <Tabel transactions={transactions} />
               </div>
+            </Box>
+          </>
+        );
+      case "avatar":
+        return (
+          <>
+            <Box sx={{ mt: 15, width: "70%" }}>
+              <Profilecard />
             </Box>
           </>
         );

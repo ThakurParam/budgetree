@@ -15,6 +15,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import passwordchangeicon from "../assets/images/passwordchangeicon.png";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 export const ResetPassword = () => {
   const [open, setOpen] = useState(false);
@@ -24,7 +25,7 @@ export const ResetPassword = () => {
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setOpen("/");
   };
   const [showPassword, setShowPassword] = useState(false);
 
@@ -38,12 +39,12 @@ export const ResetPassword = () => {
           <img src={siteimage}></img>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6} lg={6}>
-              <Box sx={{ mt: 9, ml: 6 }}>
+              <Box sx={{ mt: 9, ml: { xs: 0, md: 6 } }}>
                 <h1>Reset Password</h1>
                 <p style={{ opacity: 0.7, marginTop: "-10px" }}>
                   Please type something you’ll remember
                 </p>
-                <Box sx={{ width: "80%", mt: 6 }}>
+                <Box sx={{ width: { xs: "100%", md: "80%" }, mt: 6 }}>
                   <Box sx={{ mt: 1 }}>
                     <label style={{ fontWeight: 600 }} for="password">
                       New Password
@@ -147,21 +148,23 @@ export const ResetPassword = () => {
                       </DialogContent>
 
                       <DialogActions sx={{ mt: 5 }}>
-                        <button
-                          style={{
-                            width: "100%",
-                            height: "50px",
-                            backgroundColor: "#11409B",
-                            color: "white",
-                            borderRadius: "8px",
-                            fontSize: "15px",
-                            fontWeight: 600,
-                            border: "none",
-                          }}
-                          onClick={handleClose}
-                        >
-                          Back to Login{" "}
-                        </button>
+                        <Link style={{ color: "white", width: "100%" }} to="/">
+                          <button
+                            style={{
+                              width: "100%",
+                              height: "50px",
+                              backgroundColor: "#11409B",
+                              color: "white",
+                              borderRadius: "8px",
+                              fontSize: "15px",
+                              fontWeight: 600,
+                              border: "none",
+                            }}
+                            onClick={handleClose}
+                          >
+                            Back to Login
+                          </button>
+                        </Link>
                       </DialogActions>
                     </Box>
                   </Dialog>

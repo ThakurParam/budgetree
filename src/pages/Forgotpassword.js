@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import forgotimage from "../assets/images/forgot-image.png";
 import siteimage from "../assets/images/budgetree.png";
 import ClearIcon from "@mui/icons-material/Clear";
+import { Link } from "react-router-dom";
 
 export const Forgotpassword = () => {
   const [email, setEmail] = useState("");
@@ -31,8 +32,8 @@ export const Forgotpassword = () => {
           <img src={siteimage}></img>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6} lg={6}>
-              <Box sx={{ mt: 9, ml: 6 }}>
-                <Box sx={{ width: "90%" }}>
+              <Box sx={{ mt: 9, ml: { xs: 0, md: 6 } }}>
+                <Box sx={{ width: { xs: "100%", md: "90%" } }}>
                   <h1>Forgot Password</h1>
                   <p style={{ opacity: 0.7, marginTop: "-10px" }}>
                     Don’t worry ! It happens. Please enter the phone number we
@@ -40,7 +41,7 @@ export const Forgotpassword = () => {
                   </p>
                 </Box>
 
-                <Box sx={{ width: "80%", mt: 6 }}>
+                <Box sx={{ width: { xs: "100%", md: "80%" }, mt: 6 }}>
                   <Box sx={{ mt: 1 }}>
                     <label style={{ fontWeight: 600 }} for="email">
                       Enter email
@@ -101,26 +102,30 @@ export const Forgotpassword = () => {
                       </Grid>
                     </Box>
                   </Box>
-                  <button
-                    style={{
-                      width: "100%",
-                      height: "60px",
-                      color: "white",
-                      fontSize: "15px",
+                  <Link to="/resetpassword">
+                    <button
+                      style={{
+                        width: "100%",
+                        height: "60px",
+                        color: "white",
+                        fontSize: "15px",
 
-                      backgroundColor: "#11409B",
-                      border: "none",
-                      borderRadius: "8px",
-                      marginTop: "35px",
-                    }}
-                  >
-                    Continue
-                  </button>
+                        backgroundColor: "#11409B",
+                        border: "none",
+                        borderRadius: "8px",
+                        marginTop: "35px",
+                      }}
+                    >
+                      Continue
+                    </button>
+                  </Link>
 
                   <p style={{ textAlign: "center" }}>
                     Remember Password?
                     <span style={{ color: "#11409B", fontWeight: 500 }}>
-                      Sign in
+                      <Link style={{ textDecoration: "none" }} to="/">
+                        Sign in
+                      </Link>
                     </span>
                   </p>
                 </Box>
