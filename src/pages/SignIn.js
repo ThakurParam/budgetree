@@ -42,16 +42,29 @@ export const SignIn = () => {
   return (
     <>
       <Box>
-        <Container maxWidth="lg">
-          <img src={siteimage}></img>
-          <Grid container spacing={2}>
+        <Box>
+          <Grid container spacing={2} sx={{ p: { xs: 1, md: 7 } }}>
             <Grid item xs={12} md={6} lg={6}>
-              <Box sx={{ mt: 9, ml: { xs: 0, md: 6 } }}>
-                <h1>Sign In</h1>
-                <p style={{ opacity: 0.7, marginTop: "-10px" }}>
+              <img src={siteimage}></img>
+              <Box
+                sx={{
+                  ml: { xs: 0, md: 9 },
+                  pl: { xs: 0 },
+                  md: 5,
+                  mt: 15,
+                }}
+              >
+                <h1 style={{ fontSize: "60px" }}>Sign In</h1>
+                <p
+                  style={{
+                    opacity: 0.7,
+                    marginTop: "-25px",
+                    fontSize: "x-large",
+                  }}
+                >
                   Please fill your detail to access your account.
                 </p>
-                <Box sx={{ width: { xs: "100%", md: "80%" }, mt: 6 }}>
+                <Box sx={{ width: { xs: "100%", md: "70%" }, mt: 10 }}>
                   <Box sx={{ mt: 1 }}>
                     <label style={{ fontWeight: 600 }} for="email">
                       Email
@@ -70,7 +83,7 @@ export const SignIn = () => {
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">
-                            {email && (
+                            {/* {email && (
                               <IconButton
                                 edge="end"
                                 onClick={handleClear}
@@ -82,13 +95,13 @@ export const SignIn = () => {
                               >
                                 <ClearIcon sx={{ width: 10, height: 10 }} />
                               </IconButton>
-                            )}
+                            )} */}
                           </InputAdornment>
                         ),
                       }}
                     />
                   </Box>
-                  <Box sx={{ mt: 2 }}>
+                  <Box sx={{ mt: 5 }}>
                     <label style={{ fontWeight: 600 }} for="password">
                       Password :
                     </label>
@@ -117,7 +130,7 @@ export const SignIn = () => {
                       }}
                     />
                   </Box>
-                  <Grid container spacing={2} sx={{ mt: 1 }}>
+                  <Grid container spacing={2} sx={{ mt: 2 }}>
                     <Grid
                       item
                       xs={6}
@@ -156,14 +169,14 @@ export const SignIn = () => {
                   <button
                     style={{
                       width: "100%",
-                      height: "60px",
+                      height: "70px",
                       color: "white",
                       fontSize: "15px",
 
                       backgroundColor: "#11409B",
                       borderRadius: "7px",
                       border: "none",
-                      marginTop: "5px",
+                      marginTop: "20px",
                     }}
                     onClick={handleSignIn}
                   >
@@ -171,11 +184,21 @@ export const SignIn = () => {
                   </button>
                   {/* </Link> */}
 
-                  <p style={{ textAlign: "center" }}>
+                  <p
+                    style={{
+                      textAlign: "center",
+                      marginTop: "20px",
+                      fontWeight: 500,
+                    }}
+                  >
                     Don't have an account?
                     <span style={{ color: "#11409B", fontWeight: 500 }}>
                       <Link
-                        style={{ color: "blue", textDecoration: "none" }}
+                        style={{
+                          color: "blue",
+                          textDecoration: "none",
+                          marginLeft: "5px",
+                        }}
                         to="/signup"
                       >
                         Sign up
@@ -189,7 +212,7 @@ export const SignIn = () => {
               <img style={{ width: "100%", height: "100%" }} src={signup}></img>
             </Grid>
           </Grid>
-        </Container>
+        </Box>
       </Box>
     </>
   );

@@ -62,10 +62,18 @@ export const Dashboard = () => {
   const handleMobileDrawerClose = () => {
     setMobileDrawerOpen(false);
   };
+  // notifications const //////////////////////////////////////////////////
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleNotificationsClick = () => {
-    setNotificationsOpen(!isNotificationsOpen);
+  const handleNotificationsClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
+
+  const handleNotificationsClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
 
   const handleProfileClick = () => {
     // Handle opening the profile page
@@ -248,35 +256,38 @@ export const Dashboard = () => {
   const topBar = (
     <AppBar position="fixed" sx={{ zIndex: 99 }}>
       <Toolbar sx={{ bgcolor: "white" }}>
-        <img
+        {/* <img
           style={{
             width: "8%",
             display: { md: "none", xs: "none" },
           }}
           src={siteimage}
-        ></img>
+        ></img> */}
         <mobileDrawer />
         <IconButton
           color="inherit"
           onClick={handleMobileDrawerOpen}
           sx={{
             mr: 2,
-            display: { md: "none", xs: "block", textAlign: "center" },
+            display: {
+              md: "none",
+              xs: "block",
+              textAlign: "center",
+              color: "black ",
+            },
           }}
         >
           <MenuIcon />
         </IconButton>
         <div style={{ flexGrow: 1, textAlign: "end", marginRight: "1%" }}>
-          <IconButton
+          {/* <IconButton
             color="black"
             onClick={handleNotificationsClick}
             sx={{ outline: isNotificationsOpen ? "2px solid red" : "none" }}
           >
             <NotificationsIcon />
-          </IconButton>
-          {isNotificationsOpen && (
-            <NotificationsPanel onClose={() => setNotificationsOpen(false)} />
-          )}
+          </IconButton> */}
+          {/* <NotificationsPanel /> */}
         </div>
         <div style={{ textAlign: "end", marginRight: "2%" }}>
           <IconButton edge="end" color="black" aria-label="search">
@@ -297,7 +308,7 @@ export const Dashboard = () => {
 
   const mobileDrawer = (
     <MuiDrawer
-      // sx={{ display: {}, color: "black" }}
+      style={{ color: "black" }}
       anchor="right"
       open={isMobileDrawerOpen}
       onClose={handleMobileDrawerClose}
@@ -311,11 +322,16 @@ export const Dashboard = () => {
       case "dashboard":
         return (
           <>
-            <Box sx={{ width: "100%", mt: 15 }}>
+            <Box sx={{ width: "100%", mt: 10 }}>
               <Grid container spacing={2}>
                 {[...Array(4)].map(() => (
-                  <Grid item xs={3}>
-                    <Card sx={{ width: "70%", borderRadius: "15px" }}>
+                  <Grid item xs={12} md={3} lg={3}>
+                    <Card
+                      sx={{
+                        width: { xs: "90%", md: "70%", lg: "70%" },
+                        borderRadius: "15px",
+                      }}
+                    >
                       <div
                         style={{
                           display: "flex",
@@ -355,7 +371,7 @@ export const Dashboard = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={12} md={8} lg={8}>
                     <h2>Weekly Activity</h2>
-                    <Box sx={{ width: "90%" }}>
+                    <Box sx={{ width: { xs: "100%", md: "90%", lg: "90%" } }}>
                       <Chart />
                     </Box>
                   </Grid>
@@ -365,14 +381,14 @@ export const Dashboard = () => {
                       <Grid container spacing={2}>
                         {[...Array(4)].map(() => (
                           <Grid item xs={12} md={12} lg={12}>
-                            <Card sx={{ height: "70px" }}>
+                            <Card sx={{ height: "auto" }}>
                               <Grid container spacing={2}>
                                 <Grid item xs={3}>
                                   <Avatar
                                     sx={{
-                                      mx: "30%",
-                                      height: "50%",
-                                      width: "50%",
+                                      mx: "auto",
+                                      height: "50px",
+                                      width: "50px",
                                       m: 1.5,
                                     }}
                                   />
@@ -396,6 +412,7 @@ export const Dashboard = () => {
                                     style={{
                                       fontWeight: 800,
                                       fontSize: "20px",
+                                      padding: "auto",
                                     }}
                                   >
                                     +225
@@ -421,9 +438,16 @@ export const Dashboard = () => {
                       lg={3}
                       sx={{ textAlign: "center" }}
                     >
-                      <Card sx={{ textAlign: "center", p: 2 }}>
+                      <Card
+                        sx={{
+                          textAlign: "center",
+                          p: 2,
+                          width: "80%",
+                          m: { xs: 0, md: 2, lg: 2 },
+                        }}
+                      >
                         <Avatar
-                          sx={{ mx: "42%", height: "55px", width: "55px" }}
+                          sx={{ mx: "auto", height: "55px", width: "55px" }}
                         />
                         <p style={{ fontWeight: 600, fontSize: "20px" }}>
                           Name
@@ -457,11 +481,16 @@ export const Dashboard = () => {
         );
       case "user":
         return (
-          <Box sx={{ width: "100%", mt: 15 }}>
+          <Box sx={{ width: "100%", mt: 10 }}>
             <Grid container spacing={2}>
               {[...Array(4)].map(() => (
                 <Grid item xs={12} md={6} lg={3}>
-                  <Card sx={{ width: "70%", borderRadius: "15px" }}>
+                  <Card
+                    sx={{
+                      width: { xs: "90%", md: "70%", lg: "70%" },
+                      borderRadius: "15px",
+                    }}
+                  >
                     <div
                       style={{
                         display: "flex",
@@ -498,11 +527,20 @@ export const Dashboard = () => {
               ))}
             </Grid>
             <h1 style={{ color: "blueviolet" }}>Onboard Users</h1>
-            <Grid container spacing={2} sx={{ mt: 3 }}>
+            <Grid container spacing={1} sx={{ mt: 3 }}>
               {[...Array(20)].map(() => (
                 <Grid item xs={6} md={3} lg={3} sx={{ textAlign: "center" }}>
-                  <Card sx={{ textAlign: "center", p: 2 }}>
-                    <Avatar sx={{ mx: "42%", height: "55px", width: "55px" }} />
+                  <Card
+                    sx={{
+                      textAlign: "center",
+                      p: 2,
+                      width: "80%",
+                      m: { xs: 0, md: 2, lg: 2 },
+                    }}
+                  >
+                    <Avatar
+                      sx={{ mx: "auto", height: "55px", width: "55px" }}
+                    />
                     <p style={{ fontWeight: 600, fontSize: "20px" }}>Name</p>
                     <p style={{ marginTop: "-12px", opacity: 0.7 }}>
                       Lorem ipsum
@@ -553,7 +591,7 @@ export const Dashboard = () => {
   };
   return (
     <div style={{ display: "flex" }}>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       {leftSidebar}
       {/* <Container component="main" sx={{ flexGrow: 1, p: 3 }}> */}
       {topBar}

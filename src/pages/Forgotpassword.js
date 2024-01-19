@@ -11,6 +11,7 @@ import forgotimage from "../assets/images/forgot-image.png";
 import siteimage from "../assets/images/budgetree.png";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Link } from "react-router-dom";
+import { MuiOtpInput } from "mui-one-time-password-input";
 
 export const Forgotpassword = () => {
   const [email, setEmail] = useState("");
@@ -18,30 +19,38 @@ export const Forgotpassword = () => {
   const handleClear = () => {
     setEmail("");
   };
-  const [otp, setOtp] = useState(["", "", "", "", ""]);
+  const [otp, setOtp] = React.useState("");
 
-  const handleOtpChange = (index, value) => {
-    const newOtp = [...otp];
-    newOtp[index] = value.slice(-1);
-    setOtp(newOtp);
+  const handleChange = (newValue) => {
+    setOtp(newValue);
   };
+
   return (
     <>
       <Box>
-        <Container maxWidth="lg">
-          <img src={siteimage}></img>
-          <Grid container spacing={2}>
+        <Box>
+          <Grid container spacing={2} sx={{ p: { xs: 1, md: 7 } }}>
             <Grid item xs={12} md={6} lg={6}>
-              <Box sx={{ mt: 9, ml: { xs: 0, md: 6 } }}>
+              <img src={siteimage}></img>
+              <Box sx={{ mt: 15, ml: { xs: 0, md: 9 }, md: 5 }}>
                 <Box sx={{ width: { xs: "100%", md: "90%" } }}>
-                  <h1>Forgot Password</h1>
-                  <p style={{ opacity: 0.7, marginTop: "-10px" }}>
+                  <h1 style={{ fontSize: "60px" }}>Forgot Password</h1>
+                  <p
+                    style={{
+                      opacity: 0.7,
+                      marginTop: "-25px",
+                      fontSize: {
+                        md: "x-large",
+                        //  xs: "large", lg: "x-large"
+                      },
+                    }}
+                  >
                     Don’t worry ! It happens. Please enter the phone number we
                     will send the OTP in this phone number.
                   </p>
                 </Box>
 
-                <Box sx={{ width: { xs: "100%", md: "80%" }, mt: 6 }}>
+                <Box sx={{ width: { xs: "100%", md: "70%" }, mt: 10 }}>
                   <Box sx={{ mt: 1 }}>
                     <label style={{ fontWeight: 600 }} for="email">
                       Enter email
@@ -60,7 +69,7 @@ export const Forgotpassword = () => {
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">
-                            {email && (
+                            {/* {email && (
                               <IconButton
                                 edge="end"
                                 onClick={handleClear}
@@ -72,58 +81,55 @@ export const Forgotpassword = () => {
                               >
                                 <ClearIcon sx={{ width: 10, height: 10 }} />
                               </IconButton>
-                            )}
+                            )} */}
                           </InputAdornment>
                         ),
                       }}
                     />
                   </Box>
-                  <Box sx={{ mt: 2 }}>
+                  <Box sx={{ mt: 5 }}>
                     <label style={{ fontWeight: 600 }} for="OTP">
                       Enter OTP
                     </label>
-                    <Box sx={{ mt: 1 }}>
-                      {" "}
-                      <Grid container spacing={2}>
-                        {otp.map((digit, index) => (
-                          <Grid item xs={2} key={index}>
-                            <TextField
-                              variant="outlined"
-                              fullWidth
-                              type="number"
-                              value={digit}
-                              inputProps={{ maxLength: 1 }}
-                              onChange={(e) =>
-                                handleOtpChange(index, e.target.value)
-                              }
-                            />
-                          </Grid>
-                        ))}
-                      </Grid>
+                    <Box sx={{ mt: 4 }}>
+                      <MuiOtpInput value={otp} onChange={handleChange} />
                     </Box>
                   </Box>
                   <Link to="/resetpassword">
                     <button
                       style={{
                         width: "100%",
-                        height: "60px",
+                        height: "70px",
                         color: "white",
                         fontSize: "15px",
 
                         backgroundColor: "#11409B",
                         border: "none",
                         borderRadius: "8px",
-                        marginTop: "35px",
+                        marginTop: "55px",
                       }}
                     >
                       Continue
                     </button>
                   </Link>
 
-                  <p style={{ textAlign: "center" }}>
+                  <p
+                    style={{
+                      textAlign: "center",
+                      marginTop: "20px",
+                      fontWeight: 500,
+                    }}
+                  >
                     Remember Password?
                     <span style={{ color: "#11409B", fontWeight: 500 }}>
-                      <Link style={{ textDecoration: "none" }} to="/">
+                      <Link
+                        style={{
+                          textDecoration: "none",
+                          marginLeft: "5px",
+                          color: "blue",
+                        }}
+                        to="/"
+                      >
                         Sign in
                       </Link>
                     </span>
@@ -138,7 +144,7 @@ export const Forgotpassword = () => {
               ></img>
             </Grid>
           </Grid>
-        </Container>
+        </Box>
       </Box>
     </>
   );

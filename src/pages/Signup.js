@@ -13,11 +13,11 @@ import React, { useState } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
 import siteimage from "../assets/images/budgetree.png";
 import signup2 from "../assets/images/signup.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 export const Signup = () => {
   const [email, setEmail] = useState("");
-
+  const [password, setPassword] = useState("");
   const handleClear = () => {
     setEmail("");
   };
@@ -27,58 +27,77 @@ export const Signup = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
   const [rememberMe, setRememberMe] = useState(false);
+  const handleSignIn = () => {
+    if (!email || !password) {
+      console.log("please fill the details");
+      alert("please fill the details");
+    } else {
+      navigate("/dashboard");
+    }
+  };
+  const navigate = useNavigate();
   return (
     <>
       <Box>
-        <Container maxWidth="lg">
-          <img src={siteimage}></img>
-          <Grid container spacing={2}>
+        <Box>
+          <Grid container spacing={2} sx={{ p: { xs: 1, md: 7 } }}>
             <Grid item xs={12} md={6} lg={6}>
-              <Box sx={{ mt: 9, ml: { xs: 0, md: 6 } }}>
-                <h1>Sign Up</h1>
-                <p style={{ opacity: 0.7, marginTop: "-10px" }}>
+              <img src={siteimage}></img>
+              <Box sx={{ mt: 15, ml: { xs: 0, md: 9 }, md: 5 }}>
+                <h1 style={{ fontSize: "60px" }}>Sign Up</h1>
+                <p
+                  style={{
+                    opacity: 0.7,
+                    marginTop: "-25px",
+                    fontSize: "x-large",
+                  }}
+                >
                   Please fill your detail to create your account.{" "}
                 </p>
-                <Box sx={{ width: { xs: "100%", md: "80%" }, mt: 6 }}>
-                  <label style={{ fontWeight: 600 }} for="email">
-                    Email
-                  </label>
-                  <TextField
-                    // label="Email"
-                    placeholder="Email"
-                    variant="outlined"
-                    fullWidth
-                    sx={{
-                      mt: 2,
-                      // height: "15px",
-                    }}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          {email && (
-                            <IconButton
-                              edge="end"
-                              onClick={handleClear}
-                              sx={{
-                                border: "1px solid black",
-                                opacity: 0.5,
-                                mr: 1,
-                              }}
-                            >
-                              <ClearIcon sx={{ width: 10, height: 10 }} />
-                            </IconButton>
-                          )}
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                  <Box sx={{ mt: 4 }}>
-                    <label style={{ fontWeight: 500 }} for="password">
-                      Password
+                <Box sx={{ width: { xs: "100%", md: "70%" }, mt: 10 }}>
+                  <Box sx={{ mt: 1 }}>
+                    <label style={{ fontWeight: 600 }} for="email">
+                      Email
                     </label>
                     <TextField
+                      // label="Email"
+                      placeholder="Email"
+                      variant="outlined"
+                      fullWidth
+                      sx={{
+                        mt: 2,
+                        // height: "15px",
+                      }}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            {/* {email && (
+                              <IconButton
+                                edge="end"
+                                onClick={handleClear}
+                                sx={{
+                                  border: "1px solid black",
+                                  opacity: 0.5,
+                                  mr: 1,
+                                }}
+                              >
+                                <ClearIcon sx={{ width: 10, height: 10 }} />
+                              </IconButton>
+                            )} */}
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  </Box>
+                  <Box sx={{ mt: 5 }}>
+                    <label style={{ fontWeight: 600 }} for="password">
+                      Password :
+                    </label>
+                    <TextField
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       type={showPassword ? "text" : "password"}
                       placeholder="password"
                       fullWidth
@@ -141,22 +160,33 @@ export const Signup = () => {
                     <button
                       style={{
                         width: "100%",
-                        height: "60px",
+                        height: "70px",
                         color: "white",
                         fontSize: "15px",
 
                         backgroundColor: "#11409B",
                         borderRadius: "7px",
                         border: "none",
+                        marginTop: "20px",
                       }}
+                      onClick={handleSignIn}
                     >
                       Sign Up
                     </button>
 
                     <p style={{ textAlign: "center" }}>
-                      Don't have an account
+                      Don't have an account ?
                       <span style={{ color: "#11409B", fontWeight: 500 }}>
-                        <Link to="/">Sign In</Link>
+                        <Link
+                          style={{
+                            color: "blue",
+                            textDecoration: "none",
+                            marginLeft: "5px",
+                          }}
+                          to="/"
+                        >
+                          Sign In
+                        </Link>
                       </span>
                     </p>
                   </Box>
@@ -170,7 +200,7 @@ export const Signup = () => {
               ></img>
             </Grid>
           </Grid>
-        </Container>
+        </Box>
       </Box>
     </>
   );

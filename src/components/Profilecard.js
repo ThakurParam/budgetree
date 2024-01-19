@@ -33,7 +33,7 @@ export const Profilecard = () => {
     setIsChecked(!isChecked);
   };
   return (
-    <Card sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%" }}>
       <Tabs value={tabValue} onChange={handleChangeTab}>
         <Tab
           sx={{
@@ -45,25 +45,27 @@ export const Profilecard = () => {
         />
         <Tab sx={{ fontWeight: 700 }} label="Security" />
       </Tabs>
-      <CardContent>
+      <Box sx={{ width: "100%", pb: 5 }}>
         {tabValue === 0 && (
           <Box sx={{ width: "100%" }}>
             <Grid container spacing={12}>
-              <Grid item xs={12} md={2} lg={2}>
-                <img
-                  style={{
-                    height: "30%",
-                    width: "100%",
-                    borderRadius: "50%",
-                    backgroundColor: "gray",
-                    marginTop: "30%",
-                    marginLeft: "15%",
-                  }}
-                  src={siteimage}
-                ></img>
+              <Grid item xs={12} md={12} lg={12} sx={{ alignItems: "center" }}>
+                <Box sx={{ textAlign: "center", pt: { xs: 3, md: 0 } }}>
+                  <img
+                    style={{
+                      height: "180px",
+                      width: "180px",
+                      borderRadius: "50%",
+                      backgroundColor: "gray",
+
+                      padding: "2px",
+                    }}
+                    src={siteimage}
+                  ></img>
+                </Box>
               </Grid>
-              <Grid item xs={12} md={10} lg={10}>
-                <Grid container spacing={12}>
+              <Grid item xs={12} md={10} lg={12} sx={{ mt: -5 }}>
+                <Grid container spacing={8}>
                   <Grid item xs={12} md={6} lg={6} sx={{ mt: 2.5 }}>
                     <label style={{ fontWeight: 500, fontSize: "large" }}>
                       Name :-
@@ -247,7 +249,7 @@ export const Profilecard = () => {
           </Box>
         )}
         {tabValue === 1 && (
-          <Box sx={{ mr: 0, width: "40%" }}>
+          <Box sx={{ mr: 0, width: { xs: "100%", md: "60%", lg: "40%" } }}>
             <p style={{ color: "black", fontWeight: 500, fontSize: "larger" }}>
               Two-factor Authentication
             </p>
@@ -316,7 +318,7 @@ export const Profilecard = () => {
             </Box>
           </Box>
         )}
-      </CardContent>
-    </Card>
+      </Box>
+    </Box>
   );
 };

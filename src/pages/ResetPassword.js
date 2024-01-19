@@ -35,16 +35,29 @@ export const ResetPassword = () => {
   return (
     <>
       <Box>
-        <Container maxWidth="lg">
-          <img src={siteimage}></img>
-          <Grid container spacing={2}>
+        <Box>
+          <Grid container spacing={2} sx={{ p: { xs: 1, md: 7 } }}>
             <Grid item xs={12} md={6} lg={6}>
-              <Box sx={{ mt: 9, ml: { xs: 0, md: 6 } }}>
-                <h1>Reset Password</h1>
-                <p style={{ opacity: 0.7, marginTop: "-10px" }}>
+              <img src={siteimage}></img>
+              <Box
+                sx={{
+                  ml: { xs: 0, md: 9 },
+                  pl: { xs: 0 },
+                  md: 5,
+                  mt: 15,
+                }}
+              >
+                <h1 style={{ fontSize: "60px" }}>Reset Password</h1>
+                <p
+                  style={{
+                    opacity: 0.7,
+                    marginTop: "-25px",
+                    fontSize: "x-large",
+                  }}
+                >
                   Please type something you’ll remember
                 </p>
-                <Box sx={{ width: { xs: "100%", md: "80%" }, mt: 6 }}>
+                <Box sx={{ width: { xs: "100%", md: "70%" }, mt: 10 }}>
                   <Box sx={{ mt: 1 }}>
                     <label style={{ fontWeight: 600 }} for="password">
                       New Password
@@ -74,7 +87,7 @@ export const ResetPassword = () => {
                         ),
                       }}
                     />
-                    <Box sx={{ mt: 3 }}>
+                    <Box sx={{ mt: 5 }}>
                       <label style={{ fontWeight: 500 }} for="password">
                         {" "}
                         Confirm Password
@@ -109,14 +122,14 @@ export const ResetPassword = () => {
                   <button
                     style={{
                       width: "100%",
-                      height: "60px",
+                      height: "70px",
                       color: "white",
                       fontSize: "15px",
-                      marginTop: "50px",
+
                       backgroundColor: "#11409B",
                       borderRadius: "7px",
                       border: "none",
-                      //   opacity: "0.6",
+                      marginTop: "50px",
                     }}
                     onClick={handleClickOpen}
                   >
@@ -178,7 +191,7 @@ export const ResetPassword = () => {
               ></img>
             </Grid>
           </Grid>
-        </Container>
+        </Box>
       </Box>
     </>
   );
