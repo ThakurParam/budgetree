@@ -40,10 +40,25 @@ export const Signup = () => {
     <>
       <Box>
         <Box>
-          <Grid container spacing={2} sx={{ p: { xs: 1, md: 7 } }}>
-            <Grid item xs={12} md={6} lg={6}>
-              <img src={siteimage}></img>
-              <Box sx={{ mt: 15, ml: { xs: 0, md: 9 }, md: 5 }}>
+          <img
+            style={{
+              marginTop: "10px",
+              marginLeft: "80px",
+              width: "auto ",
+              height: "auto ",
+            }}
+            src={siteimage}
+          ></img>
+          <Grid container spacing={2} sx={{ p: { xs: 1, md: 0 } }}>
+            <Grid item xs={12} md={4.6} lg={4.6}>
+              <Box
+                sx={{
+                  ml: { xs: 0, md: 22 },
+                  pl: { xs: 0 },
+                  md: 5,
+                  mt: 9,
+                }}
+              >
                 <h1 style={{ fontSize: "60px" }}>Sign Up</h1>
                 <p
                   style={{
@@ -54,7 +69,7 @@ export const Signup = () => {
                 >
                   Please fill your detail to create your account.{" "}
                 </p>
-                <Box sx={{ width: { xs: "100%", md: "70%" }, mt: 10 }}>
+                <Box sx={{ width: { xs: "100%", md: "100%" }, mt: 9 }}>
                   <Box sx={{ mt: 1 }}>
                     <label style={{ fontWeight: 600 }} for="email">
                       Email
@@ -193,7 +208,7 @@ export const Signup = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6} lg={6}>
+            <Grid item xs={12} md={4.6} lg={4.6} sx={{ ml: { xs: 0, md: 25 } }}>
               <img
                 style={{ width: "100%", height: "100%" }}
                 src={signup2}

@@ -36,15 +36,23 @@ export const ResetPassword = () => {
     <>
       <Box>
         <Box>
-          <Grid container spacing={2} sx={{ p: { xs: 1, md: 7 } }}>
-            <Grid item xs={12} md={6} lg={6}>
-              <img src={siteimage}></img>
+          <img
+            style={{
+              marginTop: "10px",
+              marginLeft: "80px",
+              width: "auto ",
+              height: "auto ",
+            }}
+            src={siteimage}
+          ></img>
+          <Grid container spacing={2} sx={{ p: { xs: 1, md: 0 } }}>
+            <Grid item xs={12} md={4.6} lg={4.6}>
               <Box
                 sx={{
-                  ml: { xs: 0, md: 9 },
+                  ml: { xs: 0, md: 22 },
                   pl: { xs: 0 },
                   md: 5,
-                  mt: 15,
+                  mt: 9,
                 }}
               >
                 <h1 style={{ fontSize: "60px" }}>Reset Password</h1>
@@ -57,7 +65,7 @@ export const ResetPassword = () => {
                 >
                   Please type something you’ll remember
                 </p>
-                <Box sx={{ width: { xs: "100%", md: "70%" }, mt: 10 }}>
+                <Box sx={{ width: { xs: "100%", md: "100%" }, mt: 10 }}>
                   <Box sx={{ mt: 1 }}>
                     <label style={{ fontWeight: 600 }} for="password">
                       New Password
@@ -184,7 +192,7 @@ export const ResetPassword = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6} lg={6}>
+            <Grid item xs={12} md={4.6} lg={4.6} sx={{ ml: { xs: 0, md: 25 } }}>
               <img
                 style={{ width: "100%", height: "100%", borderRadius: "5px" }}
                 src={forgotimage}

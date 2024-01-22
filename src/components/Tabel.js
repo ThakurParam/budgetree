@@ -9,33 +9,83 @@ import {
   Paper,
   Button,
 } from "@mui/material";
+import { Box } from "@mui/system";
 
 export const Tabel = ({ transactions }) => {
   const handleDownloadReceipt = (transactionId) => {};
   return (
-    <TableContainer component={Paper}>
+    <Box sx={{ bgcolor: "white", p: 2, borderRadius: "30px" }}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+            <TableCell
+              sx={{
+                fontWeight: 550,
+                fontSize: "20px",
+                color: " #11409b ",
+                pb: 4,
+              }}
+            >
               Description
             </TableCell>
-            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+            <TableCell
+              sx={{
+                fontWeight: 550,
+                fontSize: "20px",
+                color: " #11409b ",
+                pb: 4,
+              }}
+            >
               Transaction ID
             </TableCell>
-            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+            <TableCell
+              sx={{
+                fontWeight: 550,
+                fontSize: "20px",
+                color: " #11409b ",
+                pb: 4,
+              }}
+            >
               Type
             </TableCell>
-            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+            <TableCell
+              sx={{
+                fontWeight: 550,
+                fontSize: "20px",
+                color: "  #11409b",
+                pb: 4,
+              }}
+            >
               Card
             </TableCell>
-            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+            <TableCell
+              sx={{
+                fontWeight: 550,
+                fontSize: "20px",
+                color: "#11409b",
+                pb: 4,
+              }}
+            >
               Date
             </TableCell>
-            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+            <TableCell
+              sx={{
+                fontWeight: 550,
+                fontSize: "20px",
+                color: "#11409b ",
+                pb: 4,
+              }}
+            >
               Amount
             </TableCell>
-            <TableCell sx={{ fontWeight: 600, fontSize: "20px" }}>
+            <TableCell
+              sx={{
+                fontWeight: 550,
+                fontSize: "20px",
+                color: "#11409b ",
+                pb: 4,
+              }}
+            >
               Receipt
             </TableCell>
           </TableRow>
@@ -81,6 +131,11 @@ export const Tabel = ({ transactions }) => {
               </TableCell>
               <TableCell>
                 <Button
+                  sx={{
+                    borderRadius: "40px",
+                    color: "#123288",
+                    border: "2px solid #123288",
+                  }}
                   variant="outlined"
                   onClick={() =>
                     handleDownloadReceipt(transaction.transactionId)
@@ -93,6 +148,6 @@ export const Tabel = ({ transactions }) => {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+    </Box>
   );
 };

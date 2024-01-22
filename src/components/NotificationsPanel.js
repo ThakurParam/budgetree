@@ -34,8 +34,8 @@ export const NotificationsPanel = () => {
 
   return (
     <>
-      <IconButton color="inherit" onClick={handleNotificationsClick}>
-        <NotificationsIcon />
+      <IconButton color="black" onClick={handleNotificationsClick}>
+        <NotificationsIcon sx={{ fontSize: "40px", margin: "20px" }} />
       </IconButton>
       {notificationsPopover}
     </>

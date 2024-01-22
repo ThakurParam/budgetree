@@ -20,10 +20,32 @@ import { Password } from "@mui/icons-material";
 export const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-  const handleClear = () => {
-    setEmail("");
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    // Simple email validation
+    if (!value.includes("@") || !value.includes(".")) {
+      setEmailError("Invalid email address");
+    } else {
+      setEmailError("");
+    }
   };
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+
+    if (value.length < 8) {
+      setPasswordError("Password must be at least 8 characters");
+    } else {
+      setPasswordError(" password matched");
+    }
+  };
+
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePasswordVisibility = () => {
@@ -31,11 +53,11 @@ export const SignIn = () => {
   };
   const [rememberMe, setRememberMe] = useState(false);
   const handleSignIn = () => {
-    if (!email || !password) {
-      console.log("please fill the details");
-      alert("please fill the details");
-    } else {
+    if (!emailError && !passwordError) {
+      console.log("form submitted successfully");
       navigate("/dashboard");
+    } else {
+      alert("please fill the details");
     }
   };
   const navigate = useNavigate();
@@ -43,15 +65,23 @@ export const SignIn = () => {
     <>
       <Box>
         <Box>
-          <Grid container spacing={2} sx={{ p: { xs: 1, md: 7 } }}>
-            <Grid item xs={12} md={6} lg={6}>
-              <img src={siteimage}></img>
+          <img
+            style={{
+              marginTop: "10px",
+              marginLeft: "80px",
+              width: "auto ",
+              height: "auto ",
+            }}
+            src={siteimage}
+          ></img>
+          <Grid container spacing={2} sx={{ p: { xs: 1, md: 0 } }}>
+            <Grid item xs={12} md={4.6} lg={4.6}>
               <Box
                 sx={{
-                  ml: { xs: 0, md: 9 },
+                  ml: { xs: 0, md: 22 },
                   pl: { xs: 0 },
                   md: 5,
-                  mt: 15,
+                  mt: 9,
                 }}
               >
                 <h1 style={{ fontSize: "60px" }}>Sign In</h1>
@@ -64,7 +94,7 @@ export const SignIn = () => {
                 >
                   Please fill your detail to access your account.
                 </p>
-                <Box sx={{ width: { xs: "100%", md: "70%" }, mt: 10 }}>
+                <Box sx={{ width: { xs: "100%", md: "100%" }, mt: 9 }}>
                   <Box sx={{ mt: 1 }}>
                     <label style={{ fontWeight: 600 }} for="email">
                       Email
@@ -79,7 +109,9 @@ export const SignIn = () => {
                         // height: "15px",
                       }}
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={handleEmailChange}
+                      error={!!emailError}
+                      helperText={emailError}
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">
@@ -107,7 +139,9 @@ export const SignIn = () => {
                     </label>
                     <TextField
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={handlePasswordChange}
+                      error={!!passwordError}
+                      helperText={passwordError}
                       type={showPassword ? "text" : "password"}
                       placeholder="password"
                       fullWidth
@@ -187,7 +221,7 @@ export const SignIn = () => {
                   <p
                     style={{
                       textAlign: "center",
-                      marginTop: "20px",
+                      marginTop: "30px",
                       fontWeight: 500,
                     }}
                   >
@@ -208,7 +242,7 @@ export const SignIn = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6} lg={6}>
+            <Grid item xs={12} md={4.6} lg={4.6} sx={{ ml: { xs: 0, md: 25 } }}>
               <img style={{ width: "100%", height: "100%" }} src={signup}></img>
             </Grid>
           </Grid>
