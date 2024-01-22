@@ -27,7 +27,6 @@ export const SignIn = () => {
     const value = e.target.value;
     setEmail(value);
 
-    // Simple email validation
     if (!value.includes("@") || !value.includes(".")) {
       setEmailError("Invalid email address");
     } else {
@@ -42,7 +41,7 @@ export const SignIn = () => {
     if (value.length < 8) {
       setPasswordError("Password must be at least 8 characters");
     } else {
-      setPasswordError(" password matched");
+      setPasswordError("");
     }
   };
 
