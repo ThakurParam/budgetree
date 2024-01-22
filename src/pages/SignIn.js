@@ -144,7 +144,7 @@ export const SignIn = () => {
                       type={showPassword ? "text" : "password"}
                       placeholder="password"
                       fullWidth
-                      sx={{ mt: 1 }}
+                      sx={{ mt: 1, borderRadius: 5 }}
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">

@@ -39,6 +39,7 @@ import siteimage from "../assets/images/budgetree.png";
 import { NotificationsPanel } from "../components/NotificationsPanel";
 import HomeIcon from "@mui/icons-material/Home";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import { Searchbar } from "../components/Searchbar";
 export const Dashboard = () => {
   const [selectedTab, setSelectedTab] = useState("");
   const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -310,9 +311,7 @@ export const Dashboard = () => {
           </IconButton> */}
         </div>
         <div style={{ textAlign: "end" }}>
-          <IconButton edge="end" color="black" aria-label="search">
-            <SearchIcon sx={{ fontSize: "35px" }} />
-          </IconButton>
+          <Searchbar />
         </div>
         <NotificationsPanel />
         <div>

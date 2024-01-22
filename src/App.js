@@ -17,6 +17,7 @@ import { Icon } from "@mui/material";
 import { Tabel2 } from "./components/Tabel2";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NotificationsPanel } from "./components/NotificationsPanel";
+import { Searchbar } from "./components/Searchbar";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       {/* <NotificationsPanel /> */}
+      {/* <Searchbar /> */}
     </>
   );
 }

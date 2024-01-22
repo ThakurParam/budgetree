@@ -56,7 +56,6 @@ export const Forgotpassword = () => {
                       marginTop: "-25px",
                       fontSize: {
                         md: "x-large",
-                        //  xs: "large", lg: "x-large"
                       },
                     }}
                   >
@@ -71,13 +70,11 @@ export const Forgotpassword = () => {
                       Enter email
                     </label>
                     <TextField
-                      // label="Email"
                       placeholder="Email"
                       variant="outlined"
                       fullWidth
                       sx={{
                         mt: 2,
-                        // height: "15px",
                       }}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
