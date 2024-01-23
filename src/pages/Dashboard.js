@@ -98,7 +98,7 @@ export const Dashboard = () => {
         zIndex: 99,
         width: 320,
         display: { md: "block", xs: "none" },
-        flexShrink: 0,
+        // flexShrink: 0,
         fontSize: "20px",
 
         "& .MuiDrawer-paper": {
@@ -109,16 +109,18 @@ export const Dashboard = () => {
         },
       }}
     >
-      <img
-        style={{
-          width: "auto",
-          height: "auto",
-          // display: "none",
-          margin: "15px",
-        }}
-        src={siteimage}
-      ></img>
-      <List sx={{ mt: 5 }}>
+      <div>
+        <img
+          style={{
+            width: "auto",
+            height: "auto",
+            // display: "none",
+            margin: "25px",
+          }}
+          src={siteimage}
+        ></img>
+      </div>
+      <List sx={{ mt: 2 }}>
         <ListItem
           button
           key="dashboard"
@@ -138,12 +140,18 @@ export const Dashboard = () => {
               }}
             />
           </ListItemIcon>
-          <ListItemText
-            primary="Dashboard"
-            sx={{
-              color: selectedTab === "dashboard" ? "blue" : "",
-            }}
-          />
+          <ListItemText>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                fontWeight: 600,
+                color: selectedTab === "dashboard" ? "blue" : "gray",
+                fontSize: "21px",
+              }}
+            >
+              Dashboard
+            </Typography>
+          </ListItemText>
         </ListItem>
         <ListItem
           button
@@ -165,10 +173,18 @@ export const Dashboard = () => {
               }}
             />
           </ListItemIcon>
-          <ListItemText
-            primary="User"
-            sx={{ color: selectedTab === "user" ? "blue" : "" }}
-          />
+          <ListItemText>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                fontWeight: 600,
+                color: selectedTab === "user" ? "blue" : "gray",
+                fontSize: "21px",
+              }}
+            >
+              User
+            </Typography>
+          </ListItemText>
         </ListItem>
         <ListItem
           button
@@ -190,13 +206,18 @@ export const Dashboard = () => {
               }}
             />
           </ListItemIcon>
-          <ListItemText
-            primary="Transactions"
-            sx={{
-              color: selectedTab === "transactions" ? "blue" : "",
-              fontSize: "25px",
-            }}
-          />
+          <ListItemText>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                fontWeight: 600,
+                color: selectedTab === "transactions" ? "blue" : "gray",
+                fontSize: "21px",
+              }}
+            >
+              Transactions
+            </Typography>
+          </ListItemText>
         </ListItem>
       </List>
     </Drawer>
