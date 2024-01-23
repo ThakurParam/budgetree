@@ -18,8 +18,29 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 export const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleClear = () => {
-    setEmail("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    if (!value.includes("@") || !value.includes(".")) {
+      setEmailError("Invalid email address");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+
+    if (value.length < 8) {
+      setPasswordError("Password must be at least 8 characters");
+    } else {
+      setPasswordError("");
+    }
   };
   const [showPassword, setShowPassword] = useState(false);
 
@@ -28,11 +49,11 @@ export const Signup = () => {
   };
   const [rememberMe, setRememberMe] = useState(false);
   const handleSignIn = () => {
-    if (!email || !password) {
-      console.log("please fill the details");
-      alert("please fill the details");
-    } else {
+    if (!emailError && !passwordError) {
+      console.log("Form Submitted Successfully");
       navigate("/dashboard");
+    } else {
+      alert("please fill the details");
     }
   };
   const navigate = useNavigate();
@@ -84,24 +105,12 @@ export const Signup = () => {
                         // height: "15px",
                       }}
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={handleEmailChange}
+                      error={!!emailError}
+                      helperText={emailError}
                       InputProps={{
                         endAdornment: (
-                          <InputAdornment position="end">
-                            {/* {email && (
-                              <IconButton
-                                edge="end"
-                                onClick={handleClear}
-                                sx={{
-                                  border: "1px solid black",
-                                  opacity: 0.5,
-                                  mr: 1,
-                                }}
-                              >
-                                <ClearIcon sx={{ width: 10, height: 10 }} />
-                              </IconButton>
-                            )} */}
-                          </InputAdornment>
+                          <InputAdornment position="end"></InputAdornment>
                         ),
                       }}
                     />
@@ -112,7 +121,8 @@ export const Signup = () => {
                     </label>
                     <TextField
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={handlePasswordChange}
+                      error={!!passwordError}
                       type={showPassword ? "text" : "password"}
                       placeholder="password"
                       fullWidth

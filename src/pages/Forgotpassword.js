@@ -19,7 +19,7 @@ export const Forgotpassword = () => {
   const handleClear = () => {
     setEmail("");
   };
-  const [otp, setOtp] = React.useState("");
+  const [otp, setOtp] = useState("");
 
   const handleChange = (newValue) => {
     setOtp(newValue);

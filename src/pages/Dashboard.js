@@ -301,15 +301,7 @@ export const Dashboard = () => {
         >
           <MenuIcon />
         </IconButton>
-        <div style={{ flexGrow: 1, textAlign: "end", marginRight: "1%" }}>
-          {/* <IconButton
-            color="black"
-            onClick={handleNotificationsClick}
-            sx={{ outline: isNotificationsOpen ? "2px solid red" : "none" }}
-          >
-            <NotificationsIcon />
-          </IconButton> */}
-        </div>
+        <div style={{ flexGrow: 1, textAlign: "end", marginRight: "1%" }}></div>
         <div style={{ textAlign: "end" }}>
           <Searchbar />
         </div>
